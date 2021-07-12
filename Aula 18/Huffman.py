@@ -1,31 +1,77 @@
+from Node import Node
 import collections
 import heapq
 
+file = open('E:\Aulas\Algoritmos de Programação\Python\Algoritmos de Programação 3\Aula 18\hino.txt','r', encoding="utf8")
+read = file.read()
+
 class Huffman:
     
-    def Frequency(self, myFile):
-        frequency = collections.Counter(myFile)
-        print(frequency)
+    def Frequency(self, stringFile):
+        # Cria o dicionário da frequência
+        # Começa vazio
+        frequency = {}
+        # Para cada caracter no arquivo já transformado em string
+        for char in stringFile:
+            # Se o caracter não está no dicionário
+            if not char in frequency:
+                # Inicializa a posição
+                frequency[char] = 0
+            # Soma 1 para a contagem
+            frequency[char] += 1
+        # Printa a frequêcia
+        print(frequency, '\n')
+        frequency = self.SortFrequency(frequency)
         return frequency
 
-    def CountingSort(array, max):
+    def SortFrequency(self, frequencyList):
+        sortedFrequency = {}
+        
+        print(sorted(frequencyList, key = frequencyList.get), '\n')
+        # Ordena a frequência pelo Valor, em ordem Crescente
+        for i in sorted(frequencyList, key = frequencyList.get):
+             # Se o caracter não está no dicionário
+            if not i in sortedFrequency:
+                # Inicializa a posição no novo dict
+                sortedFrequency[i] = 0
+            # Chave do novo dicionário, recebe o valor do dicionário de frequência original
+            sortedFrequency[i] = frequencyList[i]
+        # Printa
+        print(sortedFrequency)
+        # Retorna ela
+        return sortedFrequency
 
-    #1
-    size = len(array)
-    output = [0] * size
-
-    #2 Initialize count array
-    count = [0] * (max + 1)
-
-    #3 Store the count of each elements in count array
-    for i in range(0, size):
-        count[array[i]] += 1
-
-    #4 Store the cummulative count
-    for i in range(1, 10):
-        count[i] += count[i - 1]
-
-    def Prefixes(self, frequency):
+    def HuffmanAlgorithm(self):
         tree = []
-        for char, freq in frequency.items():
-            heapq.heappush(tree,(freq,char))
+        frequency = {}
+        frequency = self.Frequency(read)
+
+        counter = 0
+        currentValue = 0
+        labelValue = 0
+        for i in frequency.values():
+            counter+=1
+            currentValue = i
+            labelValue += i
+
+            node = Node()
+            node.SetLabel(labelValue)
+
+            if counter == 2:
+                value = 0
+                break
+            
+
+
+
+                
+        #node = Node(frequency.get(0), frequency.get(1),frequency
+        #node.ShowNode()
+        
+
+
+
+
+test = Huffman()
+test.HuffmanAlgorithm()
+
