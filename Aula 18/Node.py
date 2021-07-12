@@ -1,6 +1,7 @@
 class Node:
     def __init__(self, label):
         self.label = label
+        self.char = None
         self.left = None
         self.right = None
 
@@ -20,4 +21,7 @@ class Node:
         self.left = left
 
     def SetRight(self, right):
-        self.right = right    
+        self.right = right   
+    
+    def SetChar(self, char):
+        self.char = char   
