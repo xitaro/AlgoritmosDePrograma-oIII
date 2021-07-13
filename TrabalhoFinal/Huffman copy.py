@@ -1,6 +1,6 @@
 from Node import Node
 
-file = open('C:\\Users\\Marco\\Documents\\GitHub\\AlgoritmosDePrograma-oIII\\TrabalhoFinal\\teste.txt','r', encoding="utf8")
+file = open('teste.txt','r', encoding="utf8")
 read = file.read()
 
 class Huffman:
@@ -62,10 +62,13 @@ class Huffman:
 
             # Adicionar novo pai na lista, mantendo ordenada
             #previousNode = 0
+            counter = 0
             for i in tree:
-                if parentNode.GetLabel() >= i.GetLabel():
-                    tree.insert(i.GetLabel(), parentNode)   
-                    break
+                if next(len(tree)) == None:
+                    if parentNode.GetLabel() >= i.GetLabel():
+                        tree.insert(i.GetLabel(), parentNode)   
+                        break
+                counter += 1
 
             #print(previousNode)
             #previousNode = i
