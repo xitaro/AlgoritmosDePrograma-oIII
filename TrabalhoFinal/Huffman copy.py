@@ -1,6 +1,6 @@
 from Node import Node
 
-file = open('teste.txt','r', encoding="utf8")
+file = open('C:\\Users\\Marco\\Documents\\GitHub\\AlgoritmosDePrograma-oIII\\TrabalhoFinal\\teste.txt','r', encoding="utf8")
 read = file.read()
 
 class Huffman:
@@ -39,9 +39,11 @@ class Huffman:
         tree = []
         tree = self.Frequency(read)
 
+        print("Start Tree")
         self.ShowTree(tree)
+        print('\n')
 
-        while len(tree) != 1:
+        while len(tree) > 1:
             # Pega os 2 primeiros nodes da lista
             node1 = tree[0]
             node2 = tree[1]
@@ -59,11 +61,17 @@ class Huffman:
             tree.remove(tree[0])
 
             # Adicionar novo pai na lista, mantendo ordenada
+            #previousNode = 0
             for i in tree:
-                if i.GetLabel() > parentNode.GetLabel():
-                    tree.insert(i.GetLabel() + 1, parentNode)
+                if parentNode.GetLabel() >= i.GetLabel():
+                    tree.insert(i.GetLabel(), parentNode)   
                     break
 
+            #print(previousNode)
+            #previousNode = i
+            #print(previousNode)
+
+            print("Updated Tree")
             self.ShowTree(tree)
         
     
