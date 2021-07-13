@@ -34,6 +34,9 @@ class Huffman:
             sortedFrequency.append(node)
         # Retorna ela
         return sortedFrequency
+    
+    def GetLabel(self, node):
+        return node.GetLabel()
 
     def HuffmanAlgorithm(self):
         tree = []
@@ -60,33 +63,43 @@ class Huffman:
             tree.remove(tree[0])
             tree.remove(tree[0])
 
-            # Adicionar novo pai na lista, mantendo ordenada
-            if len(tree) == 0:
+            # Adicionar novo pai na lista,
+            tree.append(parentNode)
+            # mantendo ordenada
+            tree.sort(key=self.GetLabel)
+
+            print("Updated Tree")
+            self.ShowTree(tree)     
+
+            '''if len(tree) == 0:
                 tree.append(parentNode)
             elif len(tree) == 1:
                 if parentNode.GetLabel() <= tree[0].GetLabel():                 
                     tree.insert(0, parentNode)  
                 else:
                     tree.append(parentNode)
-            else: 
-                for i in tree:
-                    if parentNode.GetLabel() < i.GetLabel():                 
-                        tree.insert(tree.index(i), parentNode)
+            else:
+                lastNode = tree[len(tree)-1]
+                print(lastNode.GetLabel())
+                for currentNode in tree:
+                    if currentNode.GetLabel() > parentNode.GetLabel():
+                        tree.insert(tree.index(currentNode), parentNode)
                         break
-                    elif parentNode.GetLabel() >= i.GetLabel():
-                        tree.insert(tree.index(i), parentNode)
-                        break
-
-            print("Updated Tree")
-            self.ShowTree(tree)        
-    
+                    if currentNode.GetLabel() > lastNode.GetLabel():
+                        tree.append(parentNode)
+                        break'''
+          
     def ShowTree(self, tree):
         for i in tree:
             print(i.GetLabel())
         print('\n')
-                
-        #node = Node(frequency.get(0), frequency.get(1),frequency
-        #node.ShowNode()
+
+    def GetNextNode(self, tree):
+        currentNode = 0
+        nextNode = 0
+        for node in tree:
+            pass
+
 
 test = Huffman()
 test.HuffmanAlgorithm()
