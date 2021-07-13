@@ -70,10 +70,10 @@ class Huffman:
                     tree.append(parentNode)
             else: 
                 for i in tree:
-                    if parentNode.GetLabel() > i.GetLabel():                 
-                        tree.insert(tree.index(i)+1, parentNode)
+                    if parentNode.GetLabel() < i.GetLabel():                 
+                        tree.insert(tree.index(i), parentNode)
                         break
-                    elif parentNode.GetLabel() == i.GetLabel():
+                    elif parentNode.GetLabel() >= i.GetLabel():
                         tree.insert(tree.index(i), parentNode)
                         break
 
