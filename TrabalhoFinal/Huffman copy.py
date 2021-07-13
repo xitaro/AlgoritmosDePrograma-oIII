@@ -1,3 +1,4 @@
+from os import write
 from Node import Node
 
 file = open('C:\\Users\\Marco\\Documents\\GitHub\\AlgoritmosDePrograma-oIII\\TrabalhoFinal\\hino.txt','r', encoding="utf8")
@@ -119,7 +120,12 @@ class Huffman:
     def SortHelper(self, node):
         return node.GetLabel()
 
+    def WriteCompressedFile(self):
+        newFile = open('bincode.bin', 'w+b')
+        newFile.write(str.encode(self.GetEncodedText(read)))
+        newFile.close()
+
 test = Huffman()
 test.HuffmanAlgorithm()
-print(test.GetEncodedText(read))
 
+test.WriteCompressedFile()
