@@ -1,6 +1,6 @@
 from Node import Node
 
-file = open('C:\\Users\\Marco\\Documents\\GitHub\\AlgoritmosDePrograma-oIII\\TrabalhoFinal\\teste.txt','r', encoding="utf8")
+file = open('C:\\Users\\Marco\\Documents\\GitHub\\AlgoritmosDePrograma-oIII\\TrabalhoFinal\\hino.txt','r', encoding="utf8")
 read = file.read()
 
 class Huffman:
@@ -61,41 +61,32 @@ class Huffman:
             tree.remove(tree[0])
 
             # Adicionar novo pai na lista, mantendo ordenada
-            #previousNode = 0
-            for i in tree:
-                if parentNode.GetLabel() >= i.GetLabel():
-                    tree.insert(i.GetLabel(), parentNode)   
-                    break
-
-            #print(previousNode)
-            #previousNode = i
-            #print(previousNode)
+            if len(tree) == 0:
+                tree.append(parentNode)
+            elif len(tree) == 1:
+                if parentNode.GetLabel() <= tree[0].GetLabel():                 
+                    tree.insert(0, parentNode)  
+                else:
+                    tree.append(parentNode)
+            else: 
+                for i in tree:
+                    if parentNode.GetLabel() > i.GetLabel():                 
+                        tree.insert(tree.index(i)+1, parentNode)
+                        break
+                    elif parentNode.GetLabel() == i.GetLabel():
+                        tree.insert(tree.index(i), parentNode)
+                        break
 
             print("Updated Tree")
-            self.ShowTree(tree)
-        
+            self.ShowTree(tree)        
     
     def ShowTree(self, tree):
         for i in tree:
             print(i.GetLabel())
-        
-
-    def Smaller(x,y,z):
-        min = x
-
-        if y < min:
-            min = y
-        if z < min:
-            min = z
-
-        return min  
+        print('\n')
                 
         #node = Node(frequency.get(0), frequency.get(1),frequency
         #node.ShowNode()
-        
-
-
-
 
 test = Huffman()
 test.HuffmanAlgorithm()
