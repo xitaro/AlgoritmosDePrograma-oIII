@@ -1,6 +1,6 @@
 from Node import Node
 
-file = open('teste.txt','r', encoding="utf8")
+file = open('C:\\Users\\Marco\\Documents\\GitHub\\AlgoritmosDePrograma-oIII\\TrabalhoFinal\\teste.txt','r', encoding="utf8")
 read = file.read()
 
 class Huffman:
