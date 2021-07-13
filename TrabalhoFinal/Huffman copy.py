@@ -75,30 +75,15 @@ class Huffman:
             #print(previousNode)
 
             print("Updated Tree")
-            self.ShowTree(tree)
-        
+            self.ShowTree(tree)        
     
     def ShowTree(self, tree):
         for i in tree:
             print(i.GetLabel())
-        
-
-    def Smaller(x,y,z):
-        min = x
-
-        if y < min:
-            min = y
-        if z < min:
-            min = z
-
-        return min  
+        print('\n')
                 
         #node = Node(frequency.get(0), frequency.get(1),frequency
         #node.ShowNode()
-        
-
-
-
 
 test = Huffman()
 test.HuffmanAlgorithm()
