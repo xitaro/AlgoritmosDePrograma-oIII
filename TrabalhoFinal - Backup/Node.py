@@ -14,6 +14,9 @@ class Node:
     def GetRight(self):
         return self.right
 
+    def GetChar(self):
+        return self.char
+
     def SetLabel(self, label):
         self.label = label
 

@@ -1,7 +1,7 @@
 from os import write
 from Node import Node
 
-file = open('C:\\Users\\Marco\\Documents\\GitHub\\AlgoritmosDePrograma-oIII\\TrabalhoFinal\\hino.txt','r', encoding="utf8")
+file = open('C:\\Users\\Marco\\Documents\\GitHub\\AlgoritmosDePrograma-oIII\\TrabalhoFinal\\teste.txt','r', encoding="utf8")
 read = file.read()
 
 class Huffman:
@@ -122,7 +122,7 @@ class Huffman:
 
     def WriteCompressedFile(self):
         newFile = open('bincode.bin', 'w+b')
-        newFile.write(str.encode(self.GetEncodedText(read)))
+        newFile.write(self.GetEncodedText(read).encode())
         newFile.close()
 
 test = Huffman()
