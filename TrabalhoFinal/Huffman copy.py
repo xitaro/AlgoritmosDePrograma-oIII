@@ -1,11 +1,15 @@
 from os import write
 from Node import Node
 
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 file = open('teste.txt','r', encoding="utf8")
 =======
 file = open('C:\\Users\\Marco\\Documents\\GitHub\\AlgoritmosDePrograma-oIII\\TrabalhoFinal\\teste.txt','r', encoding="utf8")
 >>>>>>> 787c5952572e894c297977e30a6a0a715bf3457a
+=======
+file = open('input.in','r', encoding="utf8")
+>>>>>>> Stashed changes
 read = file.read()
 
 class Huffman:
