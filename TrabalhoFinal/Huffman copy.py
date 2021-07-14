@@ -1,7 +1,7 @@
 from os import write
 from Node import Node
 
-file = open('hino.txt','r', encoding="utf8")
+file = open('C:\\Users\\Marco\\Documents\\GitHub\\AlgoritmosDePrograma-oIII\\TrabalhoFinal\\teste.txt','r', encoding="utf8")
 read = file.read()
 
 class Huffman:
@@ -45,15 +45,22 @@ class Huffman:
         # Retorna ela
         return sortedFrequency
 
+    # Código de Huffman
     def HuffmanAlgorithm(self):
+
+        # Inicializa lista para criar a árvore
         tree = []
+        # Recebe a lista de frequência já ordenada
         tree = self.Frequency(read)
 
+        # Printa a árvore inicial
         print("Start Tree")
         self.ShowTree(tree)
         print('\n')
 
+        # Enquanto houver mais de um nodo na lista
         while len(tree) > 1:
+            
             # Pega os 2 primeiros nodes da lista
             node1 = tree[0]
             node2 = tree[1]
@@ -133,6 +140,7 @@ class Huffman:
             textoriginal += 1
         ascii = textoriginal * byte
         return ascii
+
     def CompressSize(self, stringFile):
         size = 0
         for char in stringFile:
@@ -143,15 +151,17 @@ class Huffman:
         newFile = open('bincode.bin', 'w+b')
         newFile.write(self.GetEncodedText(read).encode())
         newFile.close()
-    def DifPercent():
-        pass
 
 test = Huffman()
-filesize = test.FileSize()
 test.HuffmanAlgorithm()
 
-print(test.GetEncodedText(read))
-print("Tamanho em bits do arquivo original: ",test.FileSize(read))
-print("Tamanho após a compressão em bits: ", test.CompressSize(test.GetEncodedText(read)))
+fileSize = test.FileSize(read)
+encodedText = test.GetEncodedText(read)
+
+#compressedSize = test.CompressSize(test.FileSize(read))
+
+print(encodedText)
+print("Tamanho do arquivo original:",fileSize, 'bits')
+
 test.WriteCompressedFile()
 
