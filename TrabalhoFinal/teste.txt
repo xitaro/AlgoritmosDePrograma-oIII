@@ -1,0 +1,5 @@
+<<<<<<< HEAD
+um
+=======
+um bom corredor nao precisa nuncar ter medo do escuro
+>>>>>>> 787c5952572e894c297977e30a6a0a715bf3457a
