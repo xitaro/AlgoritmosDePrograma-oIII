@@ -10,6 +10,7 @@ read = file.read()
 
 class Huffman:
 
+    # Construtor
     def __init__(self):
         self.binCodes = {}
     
@@ -25,15 +26,20 @@ class Huffman:
                 frequency[char] = 0
             # Soma 1 para a contagem
             frequency[char] += 1
+            
         # Printa a frequêcia
         print(frequency, '\n')
+
+        # Chama a função que ordena a frequencia
         frequency = self.SortFrequency(frequency)
         return frequency
 
     def SortFrequency(self, frequencyList):
+        # Inicializa uma nova lista vazia
         sortedFrequency = []
         
         print(sorted(frequencyList, key = frequencyList.get), '\n')
+
         # Ordena a frequência pelo Valor, em ordem Crescente
         for i in sorted(frequencyList, key = frequencyList.get):
             print(i, frequencyList[i])
