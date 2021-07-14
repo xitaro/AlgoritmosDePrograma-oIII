@@ -1,6 +1,6 @@
 from Node import Node
 
-file = open('C:\\Users\\Marco\\Documents\\GitHub\\AlgoritmosDePrograma-oIII\\TrabalhoFinal\\hino.txt','r', encoding="utf8")
+file = open('teste.txt','r', encoding="utf8")
 read = file.read()
 
 class Huffman:
@@ -74,7 +74,7 @@ class Huffman:
         # Compress
         rootNode = tree[0]
         binCode = ""
-        self.Compress(rootNode, binCode)  
+        self.Compress(rootNode, binCode) 
 
         '''if len(tree) == 0:
                 tree.append(parentNode)
@@ -118,8 +118,18 @@ class Huffman:
 
     def SortHelper(self, node):
         return node.GetLabel()
+    
+    def FileSize(self,stringFile):
+        byte = 8
+        textoriginal = 0
+        for char in stringFile:
+            textoriginal += 1
+        ascii = textoriginal * byte
+        return ascii
+        
+
 
 test = Huffman()
 test.HuffmanAlgorithm()
 print(test.GetEncodedText(read))
-
+print("Tamanho em bits do arquivo original: ",test.FileSize(read))
