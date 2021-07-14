@@ -1,15 +1,7 @@
 from os import write
 from Node import Node
 
-<<<<<<< Updated upstream
-<<<<<<< HEAD
 file = open('teste.txt','r', encoding="utf8")
-=======
-file = open('C:\\Users\\Marco\\Documents\\GitHub\\AlgoritmosDePrograma-oIII\\TrabalhoFinal\\teste.txt','r', encoding="utf8")
->>>>>>> 787c5952572e894c297977e30a6a0a715bf3457a
-=======
-file = open('input.in','r', encoding="utf8")
->>>>>>> Stashed changes
 read = file.read()
 
 class Huffman:
@@ -141,9 +133,12 @@ class Huffman:
             textoriginal += 1
         ascii = textoriginal * byte
         return ascii
-        
-
-
+    def CompressSize(self, stringFile):
+        size = 0
+        for char in stringFile:
+            size += 1
+        return size
+      
     def WriteCompressedFile(self):
         newFile = open('bincode.bin', 'w+b')
         newFile.write(self.GetEncodedText(read).encode())
@@ -151,10 +146,7 @@ class Huffman:
 
 test = Huffman()
 test.HuffmanAlgorithm()
-<<<<<<< HEAD
 print(test.GetEncodedText(read))
 print("Tamanho em bits do arquivo original: ",test.FileSize(read))
-=======
-
 test.WriteCompressedFile()
->>>>>>> e4dc8d1e362cbc9362006151467438a9bd13e98a
+
