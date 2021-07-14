@@ -1,3 +1,4 @@
+from os import write
 from Node import Node
 
 file = open('teste.txt','r', encoding="utf8")
@@ -129,7 +130,17 @@ class Huffman:
         
 
 
+    def WriteCompressedFile(self):
+        newFile = open('bincode.bin', 'w+b')
+        newFile.write(str.encode(self.GetEncodedText(read)))
+        newFile.close()
+
 test = Huffman()
 test.HuffmanAlgorithm()
+<<<<<<< HEAD
 print(test.GetEncodedText(read))
 print("Tamanho em bits do arquivo original: ",test.FileSize(read))
+=======
+
+test.WriteCompressedFile()
+>>>>>>> e4dc8d1e362cbc9362006151467438a9bd13e98a
