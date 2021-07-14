@@ -1,7 +1,7 @@
 from os import write
 from Node import Node
 
-file = open('teste.txt','r', encoding="utf8")
+file = open('hino.txt','r', encoding="utf8")
 read = file.read()
 
 class Huffman:
@@ -143,10 +143,15 @@ class Huffman:
         newFile = open('bincode.bin', 'w+b')
         newFile.write(self.GetEncodedText(read).encode())
         newFile.close()
+    def DifPercent():
+        pass
 
 test = Huffman()
+filesize = test.FileSize()
 test.HuffmanAlgorithm()
+
 print(test.GetEncodedText(read))
 print("Tamanho em bits do arquivo original: ",test.FileSize(read))
+print("Tamanho após a compressão em bits: ", test.CompressSize(test.GetEncodedText(read)))
 test.WriteCompressedFile()
 
