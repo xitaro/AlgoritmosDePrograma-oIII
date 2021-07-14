@@ -1,9 +1,13 @@
+from os import write
 from Node import Node
 
-file = open('teste.txt','r', encoding="utf8")
+file = open('C:\\Users\\Marco\\Documents\\GitHub\\AlgoritmosDePrograma-oIII\\TrabalhoFinal\\teste.txt','r', encoding="utf8")
 read = file.read()
 
 class Huffman:
+
+    def __init__(self):
+        self.binCodes = {}
     
     def Frequency(self, stringFile):
         # Cria o dicionário da frequência
@@ -30,13 +34,10 @@ class Huffman:
         for i in sorted(frequencyList, key = frequencyList.get):
             print(i, frequencyList[i])
             node = Node(frequencyList[i])
-            node.SetChar(i)            
+            node.SetChar(i)        
             sortedFrequency.append(node)
         # Retorna ela
         return sortedFrequency
-    
-    def GetLabel(self, node):
-        return node.GetLabel()
 
     def HuffmanAlgorithm(self):
         tree = []
@@ -63,16 +64,20 @@ class Huffman:
             tree.remove(tree[0])
             tree.remove(tree[0])
 
-<<<<<<< HEAD
             # Adicionar novo pai na lista,
             tree.append(parentNode)
             # mantendo ordenada
-            tree.sort(key=self.GetLabel)
+            tree.sort(key=self.SortHelper)
 
             print("Updated Tree")
-            self.ShowTree(tree)     
+            self.ShowTree(tree)   
 
-            '''if len(tree) == 0:
+        # Compress
+        rootNode = tree[0]
+        binCode = ""
+        self.Compress(rootNode, binCode)  
+
+        '''if len(tree) == 0:
                 tree.append(parentNode)
             elif len(tree) == 1:
                 if parentNode.GetLabel() <= tree[0].GetLabel():                 
@@ -90,37 +95,37 @@ class Huffman:
                         tree.append(parentNode)
                         break'''
           
-=======
-            # Adicionar novo pai na lista, mantendo ordenada
-            #previousNode = 0
-            counter = 0
-            for i in tree:
-                if next(len(tree)) == None:
-                    if parentNode.GetLabel() >= i.GetLabel():
-                        tree.insert(i.GetLabel(), parentNode)   
-                        break
-                counter += 1
-
-            #print(previousNode)
-            #previousNode = i
-            #print(previousNode)
-
-            print("Updated Tree")
-            self.ShowTree(tree)        
-    
->>>>>>> 91adbca78b1553dfcebf87c02652efe5ff5a1d4a
     def ShowTree(self, tree):
         for i in tree:
             print(i.GetLabel())
         print('\n')
 
-    def GetNextNode(self, tree):
-        currentNode = 0
-        nextNode = 0
-        for node in tree:
-            pass
+    def Compress(self, root, binCode):
+        if (root == None):
+            return
 
+        if(root.GetChar() != None):
+            self.binCodes[root.GetChar()] = binCode
+            return
+        
+        self.Compress(root.GetLeft(), binCode + "0")
+        self.Compress(root.GetRight(), binCode + "1")
+
+    def GetEncodedText(self, text):
+	    encodedText = ""
+	    for char in text:
+		    encodedText += self.binCodes[char]
+	    return encodedText
+
+    def SortHelper(self, node):
+        return node.GetLabel()
+
+    def WriteCompressedFile(self):
+        newFile = open('bincode.bin', 'w+b')
+        newFile.write(self.GetEncodedText(read).encode())
+        newFile.close()
 
 test = Huffman()
 test.HuffmanAlgorithm()
 
+test.WriteCompressedFile()
